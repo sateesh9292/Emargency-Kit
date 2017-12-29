@@ -1,0 +1,52 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="dashboard-page">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+      .text-align-center{
+    text-align: center;
+  }
+    </style>
+
+    <div class="card">
+        <div class="card" on-click="taskDetails">
+            <div class="text-align-center">Tasks</div>
+        </div>
+        <div class="card" on-click="officerDetails">
+            <div class="text-align-center">Officers</div>
+        </div>
+    </div>
+  </template>
+
+  <script>
+    class DashboardPage extends Polymer.Element {
+      static get is() { return 'dashboard-page'; }
+      taskDetails(){
+        window.location.href='task-details';
+        }
+      
+      officerDetails(){
+        window.location.href='officers-details';
+        }
+
+    }
+
+    window.customElements.define(DashboardPage.is, DashboardPage);
+  </script>
+</dom-module>
