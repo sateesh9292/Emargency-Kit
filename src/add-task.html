@@ -11,17 +11,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/paper-styles/color.html">
-<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-dropdown/paper-dropdown.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="shared-styles.html">
-<link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
-    <style is="custom-style" include="demo-pages-shared-styles">
-        
-    </style>
+
 <dom-module id="add-task">
-  <template>
+    <template>
     <style include="shared-styles">
       :host {
         display: block;
@@ -60,42 +55,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="card">
       <h1 class="text-align-center">Add Task</h1>
-      <paper-input always-float-label label="Task Id" value="{{taskId}}"></paper-input>
-      <paper-input always-float-label label="Description" value="{{desc}}"></paper-input>
-      <paper-input always-float-label label="Assign To" value="{{assign}}"></paper-input>
-      <paper-input always-float-label label="Target Date" value="{{date}}"></paper-input>
+      <paper-input label="Task Id" value="{{taskId}}" auto-validate pattern="[0-9]*" error-message="Numbers only!"></paper-input>
+      <paper-input label="Description" value="{{desc}}" auto-validate pattern="[a-zA-Z]*" error-message="Letters only!"></paper-input>
+      <paper-input label="Assign To" value="{{assign}}" auto-validate pattern="[a-zA-Z]*" error-message="Letters only!"></paper-input>
+      <paper-input label="Target Date(DD/MM/YYYY)" value="{{date}}" auto-validate pattern="[0-9/]*" error-message="Date format should dd/mm/yyyy!"></paper-input>
+      <paper-dropdown label="Fruit" value="{{value}}">
+        <paper-item value="apple">Apple</paper-item>
+        <paper-item value="banana">Banana</paper-item>
+        <paper-item value="mango">Mango</paper-item>
+        <paper-item value="orange">Orange</paper-item>
+        <paper-item value="tomato">Tomato</paper-item>
+      </paper-dropdown>
       <paper-button raised class="indigo" on-tap="back">Back</paper-button>
       <paper-button raised class="green" on-tap="saveTask">save</paper-button>
-      <!-- <paper-dropdown-menu label="Dinosaurs">
-        <paper-listbox slot="dropdown-content" selected="1">
-          <paper-item>allosaurus</paper-item>
-          <paper-item>brontosaurus</paper-item>
-          <paper-item>carcharodontosaurus</paper-item>
-          <paper-item>diplodocus</paper-item>
-        </paper-listbox>
-      </paper-dropdown-menu> -->
+      
     </div>
   </template>
 
-  <script>
-    class AddTask extends Polymer.Element {
-      static get is() { return 'add-task'; }
-      saveTask(){
-          var taskObj={
-            'taskId':this.taskId,
-            'desc':this.desc,
-            'assignTo':this.assign,
-            'date':this.date
-          }
-        sessionStorage.setItem('taskObj',JSON.stringify(taskObj));
-        window.location.href='task-details';
-        console.log(taskObj);
-      }
-      back(){
-        window.location.href='task-details';
-      }
-    }
+    <script>
+        class AddTask extends Polymer.Element {
+            static get is() {
+                return 'add-task';
+            }
+            saveTask() {
+                var taskObj = {
+                    'taskId': this.taskId,
+                    'desc': this.desc,
+                    'assignTo': this.assign,
+                    'date': this.date
+                }
+                sessionStorage.setItem('taskObj', JSON.stringify(taskObj));
+                window.location.href = 'task-details';
+                console.log(taskObj);
+            }
+            back() {
+                window.location.href = 'task-details';
+            }
+        }
 
-    window.customElements.define(AddTask.is, AddTask);
-  </script>
+        window.customElements.define(AddTask.is, AddTask);
+    </script>
 </dom-module>

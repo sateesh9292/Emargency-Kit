@@ -18,12 +18,9 @@
     "paper-input": "PolymerElements/paper-input#^2.0.5",
     "paper-button": "PolymerElements/paper-button#^2.0.0",
     "d2l-icons": "BrightspaceUI/icons#^4.5.0",
-    "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#^2.0.1",
-    "paper-elements": "PolymerElements/paper-elements#^1.0.7",
-    "paper-dropdown": "pushkar8723/paper-dropdown#^2.0.0",
-    "iron-demo-helpers": "^2.0.0",
     "bwt-datatable": "bluewatertracks/bwt-datatable#^2.0.4",
-    "iron-icons": "^2.0.1"
+    "iron-icons": "^2.0.1",
+    "paper-dropdown": "pushkar8723/paper-dropdown#^2.0.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"
@@ -31,5 +28,15 @@
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0"
   },
-  "private": true
+  "private": true,
+  "homepage": "https://github.com/sateesh9292/Emargency-Kit",
+  "description": "",
+  "main": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }

@@ -15,7 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="login-page">
-  <template>
+    <template>
     <style include="shared-styles">
       :host {
         display: block;
@@ -54,20 +54,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="card">
       <h1 class="text-align-center">Login Page</h1>
-      <paper-input always-float-label label="User Name"></paper-input>
-      <paper-input always-float-label label="Password"></paper-input>
+      <paper-input label="User Name" value="{{userName}}" auto-validate pattern="[a-zA-Z]*" error-message="Letters only!"></paper-input>
+      <paper-input type="password" label="Password" value="{{password}}" auto-validate pattern="[a-zA-Z0-9]*" error-message="Password should contain letters and numbers only!"></paper-input>
       <p class="text-align-center"><paper-button raised class="indigo" on-tap="signIn">Sign In</paper-button></p>
     </div>
   </template>
 
-  <script>
-    class LoginPage extends Polymer.Element {
-      static get is() { return 'login-page'; }
-      signIn(){
-        window.location.href='dashboard';
-      }
-    }
+    <script>
+        class LoginPage extends Polymer.Element {
+            static get is() {
+                return 'login-page';
+            }
+            signIn() {
+                window.location.href = 'dashboard';
+            }
+        }
 
-    window.customElements.define(LoginPage.is, LoginPage);
-  </script>
+        window.customElements.define(LoginPage.is, LoginPage);
+    </script>
 </dom-module>
